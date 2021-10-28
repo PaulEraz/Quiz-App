@@ -9,17 +9,17 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="style.css" />
-    <script src="./app.js"></script>
+    <script src="./app.js" defer type="module"></script>
     <title>Quiz App</title>
   </head>
 
   <body>
     <div class="start-btn">
-      <button class="btn">Start Quiz</button>
+      <button class="btn" id="start-btn">Start Quiz</button>
     </div>
 
     <!-- INFO -->
-    <div class="info">
+    <div class="info" id="info">
       <div class="info-title flex">
         <h2>Rules</h2>
       </div>
@@ -29,13 +29,13 @@
         <p>3. There are 10 questions, each question gives 1 point.</p>
       </div>
       <div class="info-btns flex">
-        <button class="btn btn--reverse exit">Exit</button>
-        <button class="btn btn--reverse">Continue</button>
+        <button class="btn btn--reverse exit" id="exit">Exit</button>
+        <button class="btn btn--reverse" id="continue">Continue</button>
       </div>
     </div>
 
     <!-- QUIZ -->
-    <div class="title">
+    <div class="title" id="quiz-box">
       <header class="flex flex--sb">
         <h3>Quiz App</h3>
         <div class="timer flex flex--sb">
@@ -44,30 +44,15 @@
         </div>
       </header>
       <section class="quiz">
-        <p class="question">What or yolo?</p>
-        <div class="answers-list">
-          <div class="answer flex flex--sb">
-            <p>Hehe iks deLorem ipsum dolor</p>
-            <i class="fas fa-check right"></i>
-          </div>
-          <div class="answer flex flex--sb">
-            <p>HeheLorem ipsum dolorde</p>
-            <i class="fas fa-times wrong"></i>
-          </div>
-          <div class="answer flex flex--sb">
-            <p>Hehe iks Lorem ipsum dolor</p>
-          </div>
-          <div class="answer flex flex--sb">
-            <p>Hehe iks de ahfgasdj Lorem ipsum dolor sit amet.</p>
-          </div>
-        </div>
+        <p class="question" id="question"></p>
+        <div class="answers-list" id="answers"></div>
       </section>
       <!-- QUIZ FOOTER -->
       <footer class="flex flex--sb">
         <div>
-          <p><span>2</span> of <span>10</span> Questions</p>
+          <p><span id="question-num"></span> of <span>10</span> Questions</p>
         </div>
-        <button class="btn btn--reverse next">Next</button>
+        <button class="btn btn--reverse next" id="next">Next</button>
       </footer>
     </div>
 

@@ -63,6 +63,7 @@ body {
   min-width: 320px;
   background-color: #fff;
   border-radius: 10px;
+  transition: 0.4s;
 }
 /* END OF GENERAL */
 /* INFO */
@@ -151,11 +152,26 @@ body {
   border-color: green;
 }
 
+.right-answer {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
 .wrong {
   color: red;
   border-color: red;
 }
 
+.wrong-answer {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.disabled {
+  pointer-events: none;
+}
 /* QUIZ FOOTER */
 footer {
   margin: 35px 20px 15px;
@@ -190,4 +206,9 @@ footer span {
 
 .results-btns {
   padding: 40px 0 20px;
+}
+
+/* FOR JS */
+.show {
+  display: block;
 }
