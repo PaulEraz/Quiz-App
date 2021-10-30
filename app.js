@@ -17,5 +17,6 @@ exitBtn.addEventListener('click', () => {
 continueBtn.addEventListener('click', () => {
   info.classList.remove('show');
   quizBox.classList.add('show');
-  quizData();
 });
+
+quizData();
