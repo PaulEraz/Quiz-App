@@ -1,4 +1,5 @@
-import { quizData } from './questions.js';
+import { quizData } from './js/questions.js';
+import { timer } from './js/timer.js';
 
 const startBtn = document.querySelector('#start-btn');
 const info = document.querySelector('#info');
@@ -17,6 +18,7 @@ exitBtn.addEventListener('click', () => {
 continueBtn.addEventListener('click', () => {
   info.classList.remove('show');
   quizBox.classList.add('show');
+  timer(15);
 });
 
 quizData();

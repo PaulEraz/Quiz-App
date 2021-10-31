@@ -1,20 +1,18 @@
-const api = 'https://opentdb.com/api.php?amount=10&category=18&type=multiple';
+import { timer, idInterval } from './timer.js';
+import { showResult } from './showResult.js';
+import escapeHtml from './escapeHtml.js';
 
-const escapeHtml = unsafe => {
-  return unsafe
-    .replaceAll('&amp;', '&')
-    .replaceAll('&lt;', '<')
-    .replaceAll('&gt;', '>')
-    .replaceAll('&quot;', '"')
-    .replaceAll('&#039;', "'");
-};
+const api = 'https://opentdb.com/api.php?amount=10&category=18&type=multiple';
 
 const question = document.querySelector('#question');
 const answersList = document.querySelector('#answers-list');
 const nextBtn = document.querySelector('#next');
 const questionNum = document.querySelector('#question-num');
 
-export const quizData = async () => {
+let score = 0;
+let quizNum = 0;
+
+const quizData = async () => {
   const res = await fetch(api);
   const data = await res.json();
   const questions = data.results.map(data => escapeHtml(data.question));
@@ -22,8 +20,6 @@ export const quizData = async () => {
     escapeHtml(data.correct_answer)
   );
   const incorrectAnswers = data.results.map(data => data.incorrect_answers);
-
-  let quizNum = 0;
 
   const showQuestion = index => {
     const options = [correctAnswer[index], ...incorrectAnswers[index]];
@@ -48,13 +44,12 @@ export const quizData = async () => {
     const answers = document.querySelectorAll('#answer');
     answers.forEach(answer =>
       answer.addEventListener('click', e => {
-        console.log(e.target.innerText);
-        console.log(correctAnswer[index]);
         if (e.target.innerText === correctAnswer[index]) {
           e.target.closest('#answer').classList.add('right-answer');
           e.target.closest(
             '#answer'
           ).innerHTML += `<i class="fas fa-check right"></i>`;
+          score++;
         } else {
           e.target.closest('#answer').classList.add('wrong-answer');
           e.target.closest(
@@ -68,17 +63,23 @@ export const quizData = async () => {
           });
         }
         answers.forEach(option => option.classList.add('disabled'));
+        clearInterval(idInterval);
       })
     );
   };
+
   showQuestion(quizNum);
 
   nextBtn.addEventListener('click', () => {
     if (quizNum < questions.length - 1) {
       quizNum++;
+      clearInterval(idInterval);
+      timer(15);
       showQuestion(quizNum);
     } else {
-      console.log('gg');
+      showResult();
     }
   });
 };
+
+export { quizData, score };

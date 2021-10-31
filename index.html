@@ -40,8 +40,9 @@
         <h3>Quiz App</h3>
         <div class="timer flex flex--sb">
           <p>Time left</p>
-          <p class="time">15</p>
+          <p class="time" id="time">--</p>
         </div>
+        <div class="timer-line" id="timer-line"></div>
       </header>
       <section class="quiz">
         <p class="question" id="question"></p>
@@ -57,15 +58,14 @@
     </div>
 
     <!-- RESULTS -->
-    <div class="results">
+    <div class="results" id="result-box">
       <h2>Quiz Completed</h2>
       <div class="scores">
         <h3>Congratulations!</h3>
-        <p>You got <span>2</span> out of 10</p>
+        <p>You got <span id="score"></span> out of 10</p>
       </div>
       <div class="results-btns">
-        <button class="btn btn--reverse next">Replay Quiz</button>
-        <button class="btn next quit">Quit</button>
+        <button class="btn btn--reverse next" id="replay">Replay Quiz</button>
       </div>
     </div>
   </body>
