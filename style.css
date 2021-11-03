@@ -65,6 +65,21 @@ body {
   border-radius: 10px;
   transition: 0.4s;
 }
+
+@media (min-width: 768px) {
+  .info,
+  .title,
+  .results {
+    min-width: 700px;
+  }
+}
+@media (min-width: 992px) {
+  .title,
+  .results {
+    min-width: 900px;
+  }
+}
+
 /* END OF GENERAL */
 /* INFO */
 .info-title {
